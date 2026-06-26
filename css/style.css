@@ -1222,5 +1222,591 @@ footer a:hover {
     }
 }
   
+  /* ============================================
+   COMMIT 5 - RESPONSIVE DESIGN & MEDIA QUERIES
+   Mobile, Tablette, Desktop - Tests sur 375px, 768px, 1200px+
+============================================ */
 
+/* ========== 27. BASE RESPONSIVE - UTILITAIRES ========== */
+
+/* Container fluide pour toutes les tailles */
+.container {
+    width: 100%;
+    padding-right: var(--spacing-sm);
+    padding-left: var(--spacing-sm);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Points de rupture Bootstrap personnalisés */
+/* Extra small (mobile) : 0 - 575px */
+/* Small (mobile large) : 576px - 767px */
+/* Medium (tablette) : 768px - 991px */
+/* Large (desktop) : 992px - 1199px */
+/* Extra large : 1200px+ */
+
+/* ========== 28. MOBILE FIRST (par défaut) ========== */
+
+/* Ajustements généraux mobile */
+@media (max-width: 575.98px) {
+    body {
+        font-size: 14px;
+    }
+    
+    /* Espacements réduits */
+    .section-padding {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    /* Typographie mobile */
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+    }
+    
+    /* Navbar mobile */
+    #mainNav {
+        padding: 0.5rem 0;
+    }
+    
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .navbar-nav {
+        padding: 1rem 0;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.5rem 0;
+        text-align: center;
+    }
+    
+    /* Bouton CTA dans navbar mobile */
+    #ctaNavBtn {
+        margin: 0.5rem auto;
+        display: inline-block;
+        width: fit-content;
+    }
+    
+    /* Dark mode toggle mobile */
+    #darkModeToggle {
+        margin: 0.5rem auto;
+        display: inline-block;
+    }
+    
+    /* Hero section mobile */
+    .hero-section {
+        min-height: auto;
+        padding: 100px 0 50px;
+        text-align: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content .lead {
+        font-size: 1rem;
+    }
+    
+    .hero-buttons .btn {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0 !important;
+    }
+    
+    .hero-image {
+        margin-top: 2rem;
+    }
+    
+    /* Statistiques mobile */
+    .stats-container {
+        margin-top: 2rem;
+        padding: 1.5rem 0 !important;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .stat-label {
+        font-size: 0.85rem;
+    }
+    
+    /* Bento Grid mobile */
+    .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .bento-card {
+        padding: 1.5rem;
+    }
+    
+    .bento-card .step-number {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    /* Catégories mobile */
+    .category-card {
+        padding: 1.25rem;
+    }
+    
+    .category-card i {
+        font-size: 2rem;
+    }
+    
+    .category-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    /* Témoignages mobile */
+    .testimonial-card {
+        padding: 1.5rem;
+        margin: 0 0.5rem;
+    }
+    
+    .testimonial-card img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .testimonial-card .fs-5 {
+        font-size: 0.9rem;
+    }
+    
+    /* Carousel controls mobile */
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .carousel-control-prev {
+        left: -10px;
+    }
+    
+    .carousel-control-next {
+        right: -10px;
+    }
+    
+    /* CTA mobile */
+    .cta-section {
+        padding: 2rem 0;
+    }
+    
+    .cta-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .cta-section .btn-lg {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+    }
+    
+    /* Footer mobile */
+    footer .row > div {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    /* Cards freelances mobile */
+    .freelance-card-item .card-img-top {
+        height: 200px;
+    }
+    
+    /* Filtres mobile */
+    .filter-section .btn-group {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .filter-btn {
+        width: 100%;
+        margin: 0 !important;
+    }
+    
+    /* Tarifs mobile */
+    .pricing-card {
+        margin-bottom: 1rem;
+    }
+    
+    .pricing-card.recommended {
+        transform: scale(1);
+    }
+    
+    /* Formulaire mobile */
+    #contactForm .row {
+        flex-direction: column;
+    }
+    
+    /* Team cards mobile */
+    .team-card, .value-card {
+        margin-bottom: 1rem;
+    }
+    
+    /* Bento stats mobile */
+    .bento-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+/* ========== 29. TABLETTE (768px - 991px) ========== */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    /* Typographie tablette */
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    /* Hero tablette */
+    .hero-section {
+        padding: 100px 0 60px;
+    }
+    
+    .hero-content {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .hero-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    /* Bento Grid tablette - 2 colonnes */
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .bento-1,
+    .bento-2,
+    .bento-3,
+    .bento-4 {
+        grid-column: span 1;
+    }
+    
+    /* Catégories tablette - Grille Bootstrap */
+    .categories .row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    /* Statistiques tablette */
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    /* Témoignages tablette */
+    .testimonial-card {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    
+    /* Carousel controls tablette */
+    .carousel-control-prev {
+        left: 0;
+    }
+    
+    .carousel-control-next {
+        right: 0;
+    }
+    
+    /* Footer tablette */
+    footer .row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    /* Freelances grille tablette */
+    .freelance-grid .row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    /* Bento stats tablette */
+    .bento-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+/* ========== 30. DESKTOP (992px - 1199px) ========== */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    /* Container desktop */
+    .container {
+        max-width: 960px;
+    }
+    
+    /* Hero desktop */
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    
+    .hero-content .lead {
+        font-size: 1.2rem;
+    }
+    
+    /* Bento Grid desktop standard */
+    .bento-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.25rem;
+    }
+    
+    /* Catégories desktop - 3 colonnes */
+    .categories .row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+    }
+    
+    /* Freelances grille desktop - 3 colonnes */
+    .freelance-grid .row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+    }
+    
+    /* Tarifs desktop - 3 colonnes */
+    .pricing-row .row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+    }
+}
+
+/* ========== 31. GRAND ÉCRAN (1200px et plus) ========== */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+    
+    /* Hero grand écran */
+    .hero-content h1 {
+        font-size: 4rem;
+    }
+    
+    .hero-content .lead {
+        font-size: 1.5rem;
+    }
+    
+    /* Bento Grid grand écran - espacement plus large */
+    .bento-grid {
+        gap: 2rem;
+    }
+    
+    /* Catégories grand écran - 3 colonnes */
+    .categories .row {
+        gap: 1.5rem;
+    }
+    
+    /* Cards survol amélioré */
+    .category-card:hover {
+        transform: translateY(-10px);
+    }
+    
+    .bento-card:hover {
+        transform: translateY(-10px);
+    }
+}
+
+/* ========== 32. ÉCRAN TRÈS LARGE (1400px et plus) ========== */
+@media (min-width: 1400px) {
+    .container {
+        max-width: 1320px;
+    }
+    
+    /* Hero très large */
+    .hero-content h1 {
+        font-size: 4.5rem;
+    }
+    
+    /* Bento Grid plus grand */
+    .bento-grid {
+        gap: 2rem;
+    }
+    
+    .bento-card {
+        padding: 2.5rem;
+    }
+    
+    /* Catégories plus grandes */
+    .category-card {
+        padding: 2.5rem;
+    }
+}
+
+/* ========== 33. GRID BOOTSTRAP RESPONSIVE (sécurité) ========== */
+
+/* Assurer que les colonnes Bootstrap fonctionnent correctement */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+}
+
+.col, [class*="col-"] {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+/* Grille responsive personnalisée pour freelances */
+@media (max-width: 575.98px) {
+    .freelance-card-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .freelance-card-item {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .freelance-card-item {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+    }
+}
+
+@media (min-width: 992px) {
+    .freelance-card-item {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+    }
+}
+
+/* ========== 34. MENU HAMBURGER BOOTSTRAP ========== */
+/* S'assurer que le bouton toggler est visible sur mobile */
+.navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 2px var(--primary-orange);
+}
+
+/* Animation du menu hamburger */
+.navbar-collapse {
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background: var(--light-bg);
+        border-radius: var(--radius-md);
+        margin-top: 1rem;
+        padding: 1rem;
+        box-shadow: var(--shadow-md);
+    }
+    
+    [data-theme="dark"] .navbar-collapse {
+        background: var(--primary-blue);
+    }
+}
+
+/* ========== 35. CORRECTIONS DE RESPONSIVE SPÉCIFIQUES ========== */
+
+/* Éviter les débordements */
+img, iframe, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tableaux responsives */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Ajustement du padding pour les sections sur mobile */
+@media (max-width: 767.98px) {
+    section {
+        overflow-x: hidden;
+    }
+    
+    /* Bouton retour en haut mobile */
+    #backToTop {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    /* Modal responsive */
+    .modal-dialog {
+        margin: 1rem;
+    }
+    
+    /* Alertes responsive */
+    .alert {
+        font-size: 0.85rem;
+        padding: 0.75rem;
+    }
+}
+
+/* ========== 36. TESTS DE RESPONSIVE (debug) ========== */
+/* Ces classes aident à visualiser les breakpoints pendant le développement */
+.responsive-test {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+/* Afficher le breakpoint actuel (optionnel - retirez en production) */
+@media (max-width: 575px) {
+    .responsive-test::after { content: "📱 Mobile (<=575px)"; }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+    .responsive-test::after { content: "📱 Mobile Large (576-767px)"; }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    .responsive-test::after { content: "📟 Tablette (768-991px)"; }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+    .responsive-test::after { content: "💻 Desktop (992-1199px)"; }
+}
+@media (min-width: 1200px) {
+    .responsive-test::after { content: "🖥️ Large Desktop (1200px+)"; }
+}
  
