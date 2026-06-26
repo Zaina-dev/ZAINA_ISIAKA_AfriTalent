@@ -1809,4 +1809,281 @@ img, iframe, video {
 @media (min-width: 1200px) {
     .responsive-test::after { content: "🖥️ Large Desktop (1200px+)"; }
 }
+  
+   /* ============================================
+   COMMIT 6 - DARK MODE, NAVBAR DYNAMIQUE, BACK TO TOP
+   Ajoutez ce code à la fin de votre style.css
+============================================ */
+
+/* ========== 37. DARK MODE - STYLES SPÉCIFIQUES ========== */
+[data-theme="dark"] {
+    /* Variables overrides */
+    --light-bg: #0F172A;
+    --dark-text: #F1F5F9;
+    --light-text: #1E293B;
+    --shadow-sm: 0 1px 2px 0 rgba(255,255,255,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(255,255,255,0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(255,255,255,0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(255,255,255,0.1);
+}
+
+/* Dark mode - Fond général */
+[data-theme="dark"] body {
+    background-color: #0F172A;
+    color: #F1F5F9;
+}
+
+/* Dark mode - Cards */
+[data-theme="dark"] .bento-card,
+[data-theme="dark"] .category-card,
+[data-theme="dark"] .testimonial-card,
+[data-theme="dark"] .pricing-card,
+[data-theme="dark"] .team-card,
+[data-theme="dark"] .value-card,
+[data-theme="dark"] .stat-bento-card {
+    background-color: #1E293B;
+    border-color: rgba(255,255,255,0.05);
+}
+
+[data-theme="dark"] .card {
+    background-color: #1E293B;
+    border-color: rgba(255,255,255,0.05);
+}
+
+[data-theme="dark"] .card-body {
+    color: #F1F5F9;
+}
+
+[data-theme="dark"] .card-text {
+    color: #CBD5E1;
+}
+
+/* Dark mode - Textes */
+[data-theme="dark"] p,
+[data-theme="dark"] .lead,
+[data-theme="dark"] .card-text,
+[data-theme="dark"] .testimonial-card p {
+    color: #CBD5E1;
+}
+
+/* Dark mode - Navbar */
+[data-theme="dark"] #mainNav.navbar-scrolled {
+    background-color: rgba(15, 23, 42, 0.95);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .navbar-nav .nav-link {
+    color: #F1F5F9 !important;
+}
+
+[data-theme="dark"] .navbar-nav .nav-link:hover {
+    color: var(--primary-orange) !important;
+}
+
+/* Dark mode - Footer */
+[data-theme="dark"] footer {
+    background-color: #0B1120 !important;
+}
+
+[data-theme="dark"] footer a {
+    color: #94A3B8;
+}
+
+[data-theme="dark"] footer a:hover {
+    color: var(--primary-orange);
+}
+
+/* Dark mode - Stats container */
+[data-theme="dark"] .stats-container {
+    background: linear-gradient(135deg, #0B1120 0%, #1E293B 100%);
+}
+
+/* Dark mode - CTA section */
+[data-theme="dark"] .cta-section {
+    background: linear-gradient(135deg, #0B1120 0%, var(--primary-orange) 100%);
+}
+
+/* Dark mode - Hero section */
+[data-theme="dark"] .hero-section {
+    background: linear-gradient(135deg, #0F172A 0%, rgba(255,107,53,0.1) 100%);
+}
+
+[data-theme="dark"] .hero-section::before {
+    background: radial-gradient(circle, rgba(255,107,53,0.1) 0%, rgba(15,23,42,0.05) 100%);
+}
+
+/* Dark mode - Formulaires */
+[data-theme="dark"] #contactForm .form-control,
+[data-theme="dark"] #contactForm .form-select {
+    background-color: #1E293B;
+    border-color: #334155;
+    color: #F1F5F9;
+}
+
+[data-theme="dark"] #contactForm .form-control:focus,
+[data-theme="dark"] #contactForm .form-select:focus {
+    border-color: var(--primary-orange);
+    background-color: #1E293B;
+}
+
+[data-theme="dark"] #contactForm .form-control::placeholder {
+    color: #64748B;
+}
+
+/* Dark mode - Accordion */
+[data-theme="dark"] .accordion-item {
+    background-color: #1E293B;
+    border-color: #334155;
+}
+
+[data-theme="dark"] .accordion-button {
+    background-color: #1E293B;
+    color: #F1F5F9;
+}
+
+[data-theme="dark"] .accordion-button:not(.collapsed) {
+    background-color: #2D4A7C;
+    color: #F1F5F9;
+}
+
+[data-theme="dark"] .accordion-body {
+    background-color: #1E293B;
+    color: #CBD5E1;
+}
+
+/* Dark mode - Carousel controls */
+[data-theme="dark"] .carousel-control-prev-icon,
+[data-theme="dark"] .carousel-control-next-icon {
+    background-color: rgba(255,107,53,0.8);
+}
+
+/* Dark mode - Scrollbar */
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: #0F172A;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: var(--primary-orange);
+}
+
+/* Dark mode - Bouton retour en haut */
+[data-theme="dark"] #backToTop {
+    background-color: var(--primary-orange);
+    color: white;
+}
+
+[data-theme="dark"] #backToTop:hover {
+    background-color: #FF8C5A;
+}
+
+/* ========== 38. NAVBAR SCROLLED - STYLES ========== */
+#mainNav.navbar-scrolled {
+    background-color: var(--light-bg);
+    box-shadow: var(--shadow-md);
+    padding: 0.5rem 0 !important;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+#mainNav.navbar-scrolled .navbar-brand {
+    font-size: 1.5rem;
+}
+
+/* ========== 39. BOUTON RETOUR EN HAUT - STYLES ========== */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-orange), #FF8C5A);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: none !important;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.back-to-top.show {
+    display: flex !important;
+    animation: fadeInUp 0.3s ease;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+    background: var(--primary-blue);
+}
+
+.back-to-top:active {
+    transform: scale(0.95);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== 40. TRANSITIONS MODE SOMBRE/CLAIR ========== */
+body,
+.bento-card,
+.category-card,
+.testimonial-card,
+.pricing-card,
+.team-card,
+.value-card,
+.stat-bento-card,
+.card,
+footer,
+.navbar,
+.hero-section,
+.cta-section,
+.stats-container,
+#contactForm .form-control,
+#contactForm .form-select,
+.accordion-item,
+.accordion-button {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ========== 41. BUTTON DARK MODE TOGGLE STYLE ========== */
+#darkModeToggle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+#darkModeToggle:hover {
+    transform: rotate(30deg);
+}
+
+#darkModeToggle.btn-warning {
+    background-color: #F59E0B;
+    border-color: #F59E0B;
+    color: #0F172A;
+}
+
+#darkModeToggle.btn-warning:hover {
+    background-color: #D97706;
+    border-color: #D97706;
+}
  
