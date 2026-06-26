@@ -251,3 +251,285 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
     };
     console.log('🛠️ Mode debug actif - Fonctions exposées dans window.__afritalent');
 }
+  
+ /* ============================================
+   AfriTalent - MAIN.JS
+   Commit 7 : Compteurs animés & Fade-in sections
+   Auteur: [Votre Nom]
+   Version: 1.0
+============================================ */
+
+'use strict';
+
+// ============================================
+// 10. COMPTEURS ANIMÉS AU SCROLL
+// ============================================
+function initAnimatedCounters() {
+    // Sélectionner tous les compteurs
+    const counters = document.querySelectorAll('.stat-number, .stat-number-bento');
+    
+    if (counters.length === 0) {
+        console.log('ℹ️ Aucun compteur trouvé sur cette page');
+        return;
+    }
+    
+    console.log(`🔄 ${counters.length} compteurs trouvés, initialisation...`);
+    
+    // Options pour l'IntersectionObserver
+    const observerOptions = {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.3 // 30% visible pour déclencher
+    };
+    
+    // Fonction pour animer un compteur
+    function animateCounter(element) {
+        const target = parseInt(element.getAttribute('data-target'));
+        if (isNaN(target)) {
+            console.warn('⚠️ data-target invalide pour', element);
+            return;
+        }
+        
+        // Si le compteur a déjà été animé, ne pas recommencer
+        if (element.dataset.animated === 'true') {
+            return;
+        }
+        
+        // Marquer comme animé
+        element.dataset.animated = 'true';
+        
+        // Variables pour l'animation
+        const duration = 2000; // 2 secondes
+        const startTime = performance.now();
+        const startValue = 0;
+        
+        // Fonction d'animation
+        function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Easing cubic-bezier pour un effet plus naturel
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+            const currentValue = Math.floor(startValue + (target - startValue) * easedProgress);
+            
+            // Mettre à jour l'affichage
+            element.textContent = currentValue;
+            
+            // Ajouter un effet visuel
+            if (progress < 1) {
+                element.classList.add('counter-animate');
+            } else {
+                element.textContent = target; // Valeur finale exacte
+                element.classList.remove('counter-animate');
+                
+                // Ajouter un "+" après l'animation
+                if (target > 100) {
+                    element.textContent = target + '+';
+                }
+            }
+            
+            // Continuer l'animation
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            }
+        }
+        
+        // Démarrer l'animation
+        requestAnimationFrame(updateCounter);
+    }
+    
+    // Créer l'observateur
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                animateCounter(counter);
+                // Une fois animé, on peut arrêter d'observer
+                observer.unobserve(counter);
+            }
+        });
+    }, observerOptions);
+    
+    // Observer chaque compteur
+    counters.forEach(counter => {
+        // Vérifier si le compteur a déjà été animé (page reload)
+        if (counter.dataset.animated === 'true') {
+            return;
+        }
+        observer.observe(counter);
+    });
+}
+
+// ============================================
+// 11. ANIMATIONS FADE-IN DES SECTIONS
+// ============================================
+function initFadeInSections() {
+    // Sélectionner toutes les sections à animer
+    const sections = document.querySelectorAll('section, .hero-section, .stats-container, .cta-section');
+    
+    if (sections.length === 0) {
+        console.log('ℹ️ Aucune section trouvée pour les animations fade-in');
+        return;
+    }
+    
+    console.log(`✨ ${sections.length} sections prêtes pour les animations fade-in`);
+    
+    // Options pour l'IntersectionObserver
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px', // Déclencher un peu avant que la section ne soit visible
+        threshold: 0.1 // 10% visible pour déclencher
+    };
+    
+    // Créer l'observateur
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Ajouter la classe 'visible' pour déclencher l'animation
+                entry.target.classList.add('visible');
+                
+                // Si c'est la section hero, on peut aussi ajouter une classe spéciale
+                if (entry.target.classList.contains('hero-section')) {
+                    entry.target.classList.add('hero-visible');
+                }
+                
+                // Une fois l'animation déclenchée, on peut arrêter d'observer
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Observer chaque section
+    sections.forEach((section, index) => {
+        // Ajouter une classe de base pour l'animation
+        section.classList.add('fade-in');
+        
+        // Ajouter un délai progressif pour un effet cascade
+        const delay = Math.min(index * 100, 600);
+        section.style.transitionDelay = `${delay}ms`;
+        
+        // Observer la section
+        observer.observe(section);
+    });
+}
+
+// ============================================
+// 12. ANIMATION DES SECTIONS EN FONDU POUR ABOUT
+// ============================================
+function initAboutAnimations() {
+    // Éléments spécifiques à la page About
+    const aboutElements = document.querySelectorAll('.about-story, .value-card, .team-card');
+    
+    if (aboutElements.length === 0) {
+        return;
+    }
+    
+    console.log(`🎯 ${aboutElements.length} éléments about détectés`);
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                // Ajouter un délai progressif
+                const delay = Math.min(index * 100, 500);
+                entry.target.style.transitionDelay = `${delay}ms`;
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    aboutElements.forEach(el => {
+        el.classList.add('fade-in');
+        observer.observe(el);
+    });
+}
+
+// ============================================
+// 13. ANIMATION DES CARTES CATÉGORIES
+// ============================================
+function initCategoryAnimations() {
+    const categories = document.querySelectorAll('.category-card');
+    
+    if (categories.length === 0) {
+        return;
+    }
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.2
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    categories.forEach(card => {
+        card.classList.add('fade-in');
+        observer.observe(card);
+    });
+}
+
+// ============================================
+// 14. ANIMATION DES STATS BENTO ABOUT
+// ============================================
+function initBentoStatsAnimation() {
+    const stats = document.querySelectorAll('.stat-bento-card');
+    
+    if (stats.length === 0) {
+        return;
+    }
+    
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.2
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    stats.forEach(stat => {
+        stat.classList.add('fade-in');
+        observer.observe(stat);
+    });
+}
+
+// ============================================
+// 15. INITIALISATION GÉNÉRALE
+// ============================================
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ AfriTalent - JavaScript chargé avec succès !');
+    
+    // Initialiser les fonctionnalités du Commit 6
+    initDarkMode();
+    initNavbarScroll();
+    initBackToTop();
+    initCopyrightYear();
+    
+    // Initialiser les fonctionnalités du Commit 7
+    initAnimatedCounters();
+    initFadeInSections();
+    initAboutAnimations();
+    initCategoryAnimations();
+    initBentoStatsAnimation();
+    
+    console.log('✅ Toutes les fonctionnalités sont initialisées !');
+});
