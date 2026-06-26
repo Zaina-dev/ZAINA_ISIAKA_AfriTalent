@@ -3,12 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AfriTalent - Contact</title>
+    <title>AfriTalent -  Contact | Écrivez-nous</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
+ 
+           <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-stars"></i> AfriTalent</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="freelances.html">Freelances</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tarifs.html">Tarifs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="#" class="btn btn-warning ms-3">Rejoindre AfriTalent</a>
+                <button class="btn btn-outline-secondary ms-2" id="darkModeToggle"><i class="bi bi-moon-fill"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="mt-5 pt-5">
+        <div class="container my-5">
+            <div class="text-center mb-5">
+                <h1 class="display-3 fw-bold">Contactez-nous</h1>
+                <p class="fs-4">Une question ? Un projet ? Écrivez-nous !</p>
+            </div>
+
+            <div class="row g-5">
+                <!-- Formulaire de contact -->
+                <div class="col-lg-7">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="mb-4">Envoyez-nous un message</h3>
+                            <form id="contactForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="nom" class="form-label">Nom *</label>
+                                        <input type="text" class="form-control" id="nom" name="nom">
+                                        <div class="error-message text-danger small" id="nomError"></div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="prenom" class="form-label">Prénom *</label>
+                                        <input type="text" class="form-control" id="prenom" name="prenom">
+                                        <div class="error-message text-danger small" id="prenomError"></div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email *</label>
+                                    <input type="email" class="form-control" id="email" name="email">
+                                    <div class="error-message text-danger small" id="emailError"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="sujet" class="form-label">Sujet *</label>
+                                    <select class="form-select" id="sujet" name="sujet">
+                                        <option value="">Choisissez un sujet</option>
+                                        <option value="freelance">Je suis freelance</option>
+                                        <option value="entreprise">Je suis une entreprise</option>
+                                        <option value="partenariat">Partenariat</option>
+                                        <option value="support">Support technique</option>
+                                        <option value="autre">Autre</option>
+                                    </select>
+                                    <div class="error-message text-danger small" id="sujetError"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message *</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5"></textarea>
+                                    <div class="error-message text-danger small" id="messageError"></div>
+                                    <div class="form-text">Minimum 20 caractères</div>
+                                </div>
+                                <button type="submit" class="btn btn-warning btn-lg w-100">Envoyer le message <i class="bi bi-send"></i></button>
+                                <div id="successMessage" class="alert alert-success mt-3 d-none">Message envoyé avec succès ! Nous vous répondrons dans les 24h.</div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infos de contact + Google Maps -->
+                <div class="col-lg-5">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body p-4">
+                            <h3>Nos coordonnées</h3>
+                            <ul class="list-unstyled mt-4">
+                                <li class="mb-3"><i class="bi bi-envelope-fill text-warning me-3"></i> contact@afritalent.com</li>
+                                <li class="mb-3"><i class="bi bi-telephone-fill text-warning me-3"></i> +221 78 123 45 67</li>
+                                <li class="mb-3"><i class="bi bi-whatsapp text-warning me-3"></i> +221 76 987 65 43</li>
+                                <li class="mb-3"><i class="bi bi-geo-alt-fill text-warning me-3"></i> 123 Rue de la Tech, Immeuble AfriTalent, Dakar, Sénégal</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Google Maps Iframe -->
+                    <div class="card shadow-sm">
+                        <div class="card-body p-0">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.7294087466623!2d-17.45512468463216!3d14.693023879370742!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec172e6a7a2b3e7%3A0x8c5c3d5b7f5d5e5!2sDakar%2C%20S%C3%A9n%C3%A9gal!5e0!3m2!1sfr!2sfr!4v1699999999999!5m2!1sfr!2sfr" 
+                                width="100%" 
+                                height="300" 
+                                style="border:0; border-radius: 10px;" 
+                                allowfullscreen="" 
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-3"><h3><i class="bi bi-stars"></i> AfriTalent</h3><p>La plateforme qui connecte les meilleurs talents tech africains.</p></div>
+                <div class="col-md-3"><h4>Liens utiles</h4><ul class="list-unstyled"><li><a href="index.html" class="text-white">Accueil</a></li><li><a href="freelances.html" class="text-white">Freelances</a></li><li><a href="tarifs.html" class="text-white">Tarifs</a></li></ul></div>
+                <div class="col-md-3"><h4>Ressources</h4><ul class="list-unstyled"><li><a href="#" class="text-white">Blog</a></li><li><a href="#" class="text-white">FAQ</a></li><li><a href="contact.html" class="text-white">Support</a></li></ul></div
 </body>
 </html>

@@ -10,5 +10,304 @@
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
+        
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body> 
+     <!-- Navbar identique à index.html -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-stars"></i> AfriTalent</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="freelances.html">Freelances</a></li>
+                    <li class="nav-item"><a class="nav-link" href="tarifs.html">Tarifs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <a href="#" class="btn btn-warning ms-3">Rejoindre AfriTalent</a>
+                <button class="btn btn-outline-secondary ms-2" id="darkModeToggle"><i class="bi bi-moon-fill"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="mt-5 pt-5">
+        <div class="container">
+            <div class="text-center my-5">
+                <h1 class="display-3 fw-bold">Nos Freelances</h1>
+                <p class="fs-4">Découvrez les meilleurs talents tech d'Afrique</p>
+            </div>
+
+            <!-- Filtres -->
+            <div class="filter-section text-center mb-5">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-outline-primary filter-btn active" data-category="all">Tous</button>
+                    <button class="btn btn-outline-primary filter-btn" data-category="web">Développement Web</button>
+                    <button class="btn btn-outline-primary filter-btn" data-category="design">Design UI/UX</button>
+                    <button class="btn btn-outline-primary filter-btn" data-category="marketing">Marketing Digital</button>
+                    <button class="btn btn-outline-primary filter-btn" data-category="data">Data & IA</button>
+                </div>
+            </div>
+
+            <!-- Grille des freelances -->
+            <div class="row g-4" id="freelanceGrid">
+                <!-- Les cartes seront générées ici via JS ou directement en HTML -->
+            </div>
+        </div>
+    </main>
+             
+        <!-- SECTION GRILLE FREELANCES (15 PROFILS) -->
+<div class="row g-4" id="freelanceGrid">
+    
+    <!-- 1 - Mamadou Diallo -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="web">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Mamadou Diallo.jpg" class="card-img-top" alt="Mamadou Diallo" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Mamadou Diallo</h3>
+                <p class="text-warning small">★★★★★ 4.9</p>
+                <p class="badge bg-primary">Dev Full-Stack</p>
+                <p class="card-text mt-2">Expert React, Node.js, MongoDB. 6 ans d'expérience.</p>
+                <p class="fw-bold">35€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2 - Aïssatou Ndiaye -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="design">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Aïssatou Ndiaye.jpg" class="card-img-top" alt="Aïssatou Ndiaye" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Aïssatou Ndiaye</h3>
+                <p class="text-warning small">★★★★☆ 4.8</p>
+                <p class="badge bg-primary">UI/UX Designer</p>
+                <p class="card-text mt-2">Figma, Adobe XD, Design systems. 5 ans d'expérience.</p>
+                <p class="fw-bold">40€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3 - Ibrahim Koné -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="data">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Ibrahim Koné.webp" class="card-img-top" alt="Ibrahim Koné" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Ibrahim Koné</h3>
+                <p class="text-warning small">★★★★★ 5.0</p>
+                <p class="badge bg-primary">Data Scientist</p>
+                <p class="card-text mt-2">Python, TensorFlow, IA. PhD en Machine Learning.</p>
+                <p class="fw-bold">50€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4 - Fatima Zahra -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="marketing">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Fatima Zahra.avif" class="card-img-top" alt="Fatima Zahra" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Fatima Zahra</h3>
+                <p class="text-warning small">★★★★☆ 4.7</p>
+                <p class="badge bg-primary">Marketing Digital</p>
+                <p class="card-text mt-2">SEO, Google Ads, réseaux sociaux. +50 campagnes réussies.</p>
+                <p class="fw-bold">30€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5 - Chukwudi Okafor -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="devops">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Chukwudi Okafor.avif" class="card-img-top" alt="Chukwudi Okafor" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Chukwudi Okafor</h3>
+                <p class="text-warning small">★★★★★ 4.9</p>
+                <p class="badge bg-primary">DevOps Engineer</p>
+                <p class="card-text mt-2">AWS, Docker, Kubernetes, CI/CD. 8 ans d'expérience.</p>
+                <p class="fw-bold">55€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6 - Aminata Sow -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="redaction">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Aminata Sow.webp" class="card-img-top" alt="Aminata Sow" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Aminata Sow</h3>
+                <p class="text-warning small">★★★★☆ 4.6</p>
+                <p class="badge bg-primary">Rédactrice Tech</p>
+                <p class="card-text mt-2">Blogs techniques, livres blancs, documentation API.</p>
+                <p class="fw-bold">25€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7 - Koffi Mensah -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="web">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Koffi Mensahf.avif" class="card-img-top" alt="Koffi Mensah" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Koffi Mensah</h3>
+                <p class="text-warning small">★★★★☆ 4.8</p>
+                <p class="badge bg-primary">Dev Front-End</p>
+                <p class="card-text mt-2">Vue.js, Tailwind, animations CSS. Portfolio époustouflant.</p>
+                <p class="fw-bold">30€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 8 - Yasmine Benali -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="design">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Yasmine Benali.webp" class="card-img-top" alt="Yasmine Benali" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Yasmine Benali</h3>
+                <p class="text-warning small">★★★★★ 4.9</p>
+                <p class="badge bg-primary">UI Designer</p>
+                <p class="card-text mt-2">Design mobile, design system, accessibilité.</p>
+                <p class="fw-bold">38€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 9 - Souleymane Camara -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="data">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Souleymane Camara.webp" class="card-img-top" alt="Souleymane Camara" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Souleymane Camara</h3>
+                <p class="text-warning small">★★★★★ 5.0</p>
+                <p class="badge bg-primary">IA Engineer</p>
+                <p class="card-text mt-2">LLM, NLP, Computer Vision. 10+ publications.</p>
+                <p class="fw-bold">60€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 10 - Grace Mwangi -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="marketing">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Grace Mwangi.webp" class="card-img-top" alt="Grace Mwangi" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Grace Mwangi</h3>
+                <p class="text-warning small">★★★★☆ 4.7</p>
+                <p class="badge bg-primary">SEO Expert</p>
+                <p class="card-text mt-2">Audit SEO, stratégie de contenu, backlinks.</p>
+                <p class="fw-bold">32€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 11 - Jean-Paul Niyomugabo -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="web">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Jean-Paul Niyomugabo.webp" class="card-img-top" alt="Jean-Paul Niyomugabo" widtj="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Jean-Paul Niyomugabo</h3>
+                <p class="text-warning small">★★★★☆ 4.8</p>
+                <p class="badge bg-primary">Backend Dev</p>
+                <p class="card-text mt-2">Java Spring Boot, PostgreSQL, microservices.</p>
+                <p class="fw-bold">40€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 12 - Mariam Ouattara -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="design">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Mariam Ouattara.webp" class="card-img-top" alt="Mariam Ouattara" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Mariam Ouattara</h3>
+                <p class="text-warning small">★★★★☆ 4.8</p>
+                <p class="badge bg-primary">UX Researcher</p>
+                <p class="card-text mt-2">Tests utilisateurs, personas, wireframes.</p>
+                <p class="fw-bold">35€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 13 - Aboubacar Touré -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="devops">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Aboubacar Toure.webp" class="card-img-top" alt="Aboubacar Touré" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Aboubacar Touré</h3>
+                <p class="text-warning small">★★★★★ 4.9</p>
+                <p class="badge bg-primary">Cloud Architect</p>
+                <p class="card-text mt-2">Azure, GCP, Terraform, Ansible.</p>
+                <p class="fw-bold">65€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 14 - Ndèye Coumba -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="redaction">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Ndèye Coumba.webp" class="card-img-top" alt="Ndèye Coumba" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Ndèye Coumba</h3>
+                <p class="text-warning small">★★★★☆ 4.7</p>
+                <p class="badge bg-primary">Rédactrice Tech</p>
+                <p class="card-text mt-2">White papers, cas clients, newsletters tech.</p>
+                <p class="fw-bold">28€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 15 - Ahmed Ben Salah -->
+    <div class="col-lg-4 col-md-6 freelance-card-item" data-category="data">
+        <div class="card h-100 shadow-sm">
+            <img src="images/Ahmed Ben Salah.avif" class="card-img-top" alt="Ahmed Ben Salah" width="200px">
+            <div class="card-body">
+                <h3 class="card-title h5">Ahmed Ben Salah</h3>
+                <p class="text-warning small">★★★★☆ 4.8</p>
+                <p class="badge bg-primary">Data Analyst</p>
+                <p class="card-text mt-2">SQL, Power BI, Tableau, storytelling data.</p>
+                <p class="fw-bold">45€ <span class="fw-normal text-muted">/ heure</span></p>
+                <button class="btn btn-outline-primary w-100">Voir le profil</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer identique -->
+    <footer class="bg-dark text-white mt-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-3"><h3><i class="bi bi-stars"></i> AfriTalent</h3><p>La plateforme qui connecte les meilleurs talents tech africains.</p></div>
+                <div class="col-md-3"><h4>Liens utiles</h4><ul class="list-unstyled"><li><a href="index.html" class="text-white">Accueil</a></li><li><a href="freelances.html" class="text-white">Freelances</a></li><li><a href="tarifs.html" class="text-white">Tarifs</a></li></ul></div>
+                <div class="col-md-3"><h4>Ressources</h4><ul class="list-unstyled"><li><a href="#" class="text-white">Blog</a></li><li><a href="#" class="text-white">FAQ</a></li><li><a href="contact.html" class="text-white">Support</a></li></ul></div>
+                <div class="col-md-3"><h4>Contact</h4><p>contact@afritalent.com</p></div>
+            </div>
+            <hr><div class="text-center"><p id="copyright">© AfriTalent</p></div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
 </html>
