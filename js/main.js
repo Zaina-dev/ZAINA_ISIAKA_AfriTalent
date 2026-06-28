@@ -533,3 +533,301 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('✅ Toutes les fonctionnalités sont initialisées !');
 });
+  
+   /* ============================================
+   AfriTalent - MAIN.JS
+   Commit 8 : Filtrage dynamique & Validation formulaire
+   Auteur: [Votre Nom]
+   Version: 1.0
+============================================ */
+
+'use strict';
+
+// ============================================
+// 16. FILTRAGE DYNAMIQUE DES FREELANCES
+// ============================================
+function initFreelanceFilter() {
+    // Sélectionner les boutons de filtre
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    // Sélectionner toutes les cartes de freelances
+    const freelanceCards = document.querySelectorAll('.freelance-card-item');
+    
+    // Vérifier si on est sur la page freelances
+    if (filterButtons.length === 0 || freelanceCards.length === 0) {
+        console.log('ℹ️ Page freelances : aucun filtre ou carte trouvé');
+        return;
+    }
+    
+    console.log(`🔍 ${filterButtons.length} filtres et ${freelanceCards.length} freelances trouvés`);
+    
+    // Fonction pour filtrer les freelances
+    function filterFreelances(category) {
+        let visibleCount = 0;
+        
+        freelanceCards.forEach(card => {
+            const cardCategory = card.dataset.category;
+            
+            if (category === 'all' || cardCategory === category) {
+                // Afficher la carte avec animation
+                card.style.display = 'block';
+                card.style.animation = 'fadeInUp 0.4s ease forwards';
+                visibleCount++;
+            } else {
+                // Masquer la carte
+                card.style.display = 'none';
+            }
+        });
+        
+        // Mettre à jour le compteur de résultats
+        updateResultsCount(visibleCount, freelanceCards.length);
+    }
+    
+    // Fonction pour mettre à jour le compteur de résultats
+    function updateResultsCount(visible, total) {
+        // Créer ou mettre à jour le compteur
+        let counter = document.getElementById('resultsCount');
+        
+        if (!counter) {
+            counter = document.createElement('p');
+            counter.id = 'resultsCount';
+            counter.className = 'text-muted text-center mt-3';
+            const container = document.querySelector('.filter-section');
+            if (container) {
+                container.appendChild(counter);
+            }
+        }
+        
+        if (visible === total) {
+            counter.textContent = `📊 ${total} freelances disponibles`;
+        } else {
+            counter.textContent = `📊 ${visible} freelances trouvés sur ${total}`;
+        }
+    }
+    
+    // Ajouter les événements aux boutons
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Retirer la classe active de tous les boutons
+            filterButtons.forEach(b => b.classList.remove('active'));
+            
+            // Ajouter la classe active au bouton cliqué
+            this.classList.add('active');
+            
+            // Récupérer la catégorie
+            const category = this.dataset.category;
+            
+            // Filtrer les freelances
+            filterFreelances(category);
+        });
+    });
+    
+    // Initialiser : afficher tous les freelances
+    filterFreelances('all');
+}
+
+// ============================================
+// 17. VALIDATION DU FORMULAIRE DE CONTACT
+// ============================================
+function initContactForm() {
+    const form = document.getElementById('contactForm');
+    
+    // Vérifier si on est sur la page contact
+    if (!form) {
+        console.log('ℹ️ Page contact : formulaire non trouvé');
+        return;
+    }
+    
+    console.log('📝 Formulaire de contact initialisé');
+    
+    // Sélectionner tous les champs
+    const nom = document.getElementById('nom');
+    const prenom = document.getElementById('prenom');
+    const email = document.getElementById('email');
+    const sujet = document.getElementById('sujet');
+    const message = document.getElementById('message');
+    
+    // Sélectionner les conteneurs d'erreur
+    const nomError = document.getElementById('nomError');
+    const prenomError = document.getElementById('prenomError');
+    const emailError = document.getElementById('emailError');
+    const sujetError = document.getElementById('sujetError');
+    const messageError = document.getElementById('messageError');
+    const successMessage = document.getElementById('successMessage');
+    
+    // Ajouter les événements de validation en temps réel
+    if (nom) nom.addEventListener('input', () => validateField(nom, nomError, validateNom));
+    if (prenom) prenom.addEventListener('input', () => validateField(prenom, prenomError, validatePrenom));
+    if (email) email.addEventListener('input', () => validateField(email, emailError, validateEmail));
+    if (sujet) sujet.addEventListener('change', () => validateField(sujet, sujetError, validateSujet));
+    if (message) message.addEventListener('input', () => validateField(message, messageError, validateMessage));
+    
+    // Fonctions de validation individuelles
+    function validateNom(value) {
+        return value.trim().length >= 2 ? '' : 'Le nom doit contenir au moins 2 caractères';
+    }
+    
+    function validatePrenom(value) {
+        return value.trim().length >= 2 ? '' : 'Le prénom doit contenir au moins 2 caractères';
+    }
+    
+    function validateEmail(value) {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!value.trim()) return 'L\'email est requis';
+        if (!emailRegex.test(value.trim())) return 'Veuillez entrer une adresse email valide (ex: nom@domaine.com)';
+        return '';
+    }
+    
+    function validateSujet(value) {
+        return value ? '' : 'Veuillez sélectionner un sujet';
+    }
+    
+    function validateMessage(value) {
+        if (!value.trim()) return 'Le message est requis';
+        if (value.trim().length < 20) return 'Le message doit contenir au moins 20 caractères';
+        return '';
+    }
+    
+    // Fonction de validation générique
+    function validateField(input, errorElement, validator) {
+        const error = validator(input.value);
+        
+        if (error) {
+            input.classList.add('error');
+            input.classList.remove('success');
+            errorElement.textContent = error;
+            errorElement.style.display = 'block';
+            return false;
+        } else {
+            input.classList.remove('error');
+            input.classList.add('success');
+            errorElement.textContent = '';
+            errorElement.style.display = 'none';
+            return true;
+        }
+    }
+    
+    // Fonction pour valider tout le formulaire
+    function validateForm() {
+        const isNomValid = validateField(nom, nomError, validateNom);
+        const isPrenomValid = validateField(prenom, prenomError, validatePrenom);
+        const isEmailValid = validateField(email, emailError, validateEmail);
+        const isSujetValid = validateField(sujet, sujetError, validateSujet);
+        const isMessageValid = validateField(message, messageError, validateMessage);
+        
+        return isNomValid && isPrenomValid && isEmailValid && isSujetValid && isMessageValid;
+    }
+    
+    // Gestion de la soumission du formulaire
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        console.log('📤 Tentative de soumission du formulaire...');
+        
+        // Valider tous les champs
+        if (validateForm()) {
+            // Succès ! Afficher le message de succès
+            successMessage.classList.remove('d-none');
+            successMessage.style.display = 'block';
+            
+            // Ajouter une animation
+            successMessage.style.animation = 'fadeInUp 0.5s ease';
+            
+            // Réinitialiser les champs
+            form.reset();
+            
+            // Retirer les classes de succès
+            document.querySelectorAll('#contactForm .form-control, #contactForm .form-select')
+                .forEach(input => {
+                    input.classList.remove('success', 'error');
+                });
+            
+            // Cacher le message après 5 secondes
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+                successMessage.classList.add('d-none');
+            }, 5000);
+            
+            console.log('✅ Formulaire envoyé avec succès !');
+        } else {
+            // Erreur : faire défiler jusqu'au premier champ invalide
+            const firstError = document.querySelector('#contactForm .form-control.error, #contactForm .form-select.error');
+            if (firstError) {
+                firstError.focus();
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            
+            // Ajouter un effet de shake
+            form.classList.add('shake');
+            setTimeout(() => {
+                form.classList.remove('shake');
+            }, 500);
+            
+            console.warn('⚠️ Formulaire invalide, veuillez corriger les erreurs');
+        }
+    });
+    
+    // Fonction pour réinitialiser le formulaire
+    function resetForm() {
+        form.reset();
+        document.querySelectorAll('#contactForm .form-control, #contactForm .form-select')
+            .forEach(input => {
+                input.classList.remove('success', 'error');
+            });
+        document.querySelectorAll('.error-message').forEach(el => {
+            el.textContent = '';
+            el.style.display = 'none';
+        });
+        successMessage.style.display = 'none';
+        successMessage.classList.add('d-none');
+    }
+    
+    // Ajouter un bouton de réinitialisation (optionnel)
+    const resetBtn = document.createElement('button');
+    resetBtn.type = 'button';
+    resetBtn.className = 'btn btn-outline-secondary mt-2';
+    resetBtn.textContent = '🔄 Réinitialiser';
+    resetBtn.addEventListener('click', resetForm);
+    
+    // Ajouter le bouton après le formulaire
+    form.appendChild(resetBtn);
+}
+
+// ============================================
+// 18. ANIMATION SHAKE POUR FORMULAIRE
+// ============================================
+function addShakeAnimation() {
+    // Ajouter l'animation shake au CSS si elle n'existe pas
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        .shake {
+            animation: shake 0.5s ease;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// ============================================
+// 19. INITIALISATION DU COMMIT 8
+// ============================================
+// Ajouter l'animation shake
+addShakeAnimation();
+
+// Initialiser les fonctionnalités du Commit 8
+document.addEventListener('DOMContentLoaded', function() {
+    // ... vos autres initialisations ...
+    
+    // Initialiser le filtrage des freelances
+    initFreelanceFilter();
+    
+    // Initialiser la validation du formulaire
+    initContactForm();
+    
+    console.log('✅ Commit 8 : Filtrage et validation initialisés !');
+});
