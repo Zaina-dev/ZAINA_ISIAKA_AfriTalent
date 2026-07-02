@@ -3,194 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AfriTalent - À propos | Notre mission</title>
+    <title>Rachel - Notre Histoire</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>  
-      <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html"><i class="bi bi-stars"></i> AfriTalent</a>
+            <a class="navbar-brand" href="#">Rachel</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="freelances.html">Freelances</a></li>
+                    <li class="nav-item"><a class="nav-link " href="freelances.html">Freelances</a></li>
                     <li class="nav-item"><a class="nav-link" href="tarifs.html">Tarifs</a></li>
                     <li class="nav-item"><a class="nav-link active" href="about.html">À propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
-                <a href="#" class="btn btn-warning ms-3">Rejoindre AfriTalent</a>
-                <button class="btn btn-outline-secondary ms-2" id="darkModeToggle"><i class="bi bi-moon-fill"></i></button>
             </div>
         </div>
     </nav>
 
-    <main class="mt-5 pt-5">
-        <!-- Section Notre Histoire -->
-        <div class="container my-5">
+    <!-- Section Hero -->
+    <section class="hero bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4">Bienvenue chez Rachel</h1>
+            <p class="lead">Découvrez notre histoire et notre équipe passionnée</p>
+        </div>
+    </section>
+
+    <!-- Section Histoire -->
+    <section id="histoire" class="py-5">
+        <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-3 fw-bold">Notre histoire</h1>
-                    <p class="fs-5 mt-4">Née en 2022 à Dakar, AfriTalent est née d'un constat simple : l'Afrique regorge de talents tech exceptionnels, mais ils manquent de visibilité auprès des entreprises.</p>
-                    <p class="fs-5">Aujourd'hui, nous connectons plus de 2500 freelances africains à 800+ entreprises innovantes, avec plus de 12 000 missions réalisées.</p>
+                <div class="col-md-6">
+                    <h2>Notre Histoire</h2>
+                    <p class="lead">Depuis notre création, nous nous engageons à offrir le meilleur service à nos clients.</p>
+                    <p>Notre parcours est marqué par la passion, l'innovation et un engagement sans faille envers l'excellence. Nous croyons en la force du travail d'équipe et en l'importance de créer des liens durables avec nos partenaires et clients.</p>
                 </div>
-                <div class="col-lg-6">
-                    <img src="images/Rachel logo.jpeg" alt="Notre histoire" class="img-fluid rounded-4 shadow" width="600px">
+                <div class="col-md-6">
+                    <!-- CORRECTION 1 : Renommer le fichier sans espace et supprimer "px" -->
+                    <img src="images/Rachel-logo.jpeg" alt="Notre histoire" class="img-fluid rounded-4 shadow" width="600">
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Section Chiffres clés (Bento Grid avec compteurs animés) -->
-        <div class="container my-5">
-            <div class="text-center mb-5">
-                <h2 class="display-4 fw-bold">AfriTalent en chiffres</h2>
-                <p class="fs-5">Une communauté qui grandit chaque jour</p>
-            </div>
-            <div class="bento-stats-grid">
-                <div class="stat-bento-card">
-                    <i class="bi bi-people fs-1"></i>
-                    <h2 class="stat-number-bento" data-target="2500">0</h2>
-                    <p>Freelances actifs</p>
-                </div>
-                <div class="stat-bento-card">
-                    <i class="bi bi-building fs-1"></i>
-                    <h2 class="stat-number-bento" data-target="800">0</h2>
-                    <p>Entreprises partenaires</p>
-                </div>
-                <div class="stat-bento-card">
-                    <i class="bi bi-briefcase fs-1"></i>
-                    <h2 class="stat-number-bento" data-target="12000">0</h2>
-                    <p>Missions réalisées</p>
-                </div>
-                <div class="stat-bento-card">
-                    <i class="bi bi-globe fs-1"></i>
-                    <h2 class="stat-number-bento" data-target="15">0</h2>
-                    <p>Pays africains</p>
-                </div>
-            </div>
-        </div>
+    <!-- Section Équipe -->
+    <section id="equipe" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Notre Équipe</h2>
+            <div class="row">
 
-        <!-- Section Nos valeurs -->
-        <div class="container my-5">
-            <div class="text-center mb-5">
-                <h2 class="display-4 fw-bold">Nos valeurs</h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="value-card text-center">
-                        <i class="bi bi-lightbulb fs-1 text-warning"></i>
-                        <h3 class="mt-3">Innovation</h3>
-                        <p>Nous innovons constamment pour connecter talents et entreprises efficacement.</p>
-                    </div>
+                <!-- Membre 1 -->
+                <div class="col-md-3 text-center mb-4">
+                    <!-- CORRECTION 2 : Renommer le fichier sans espace -->
+                    <img src="images/Mariama-Diallo.avif" alt="Mariama Diallo" class="rounded-circle mb-3" width="150">
+                    <h3>Mariama Diallo</h3>
+                    <p class="text-muted">Directrice Générale</p>
                 </div>
-                <div class="col-md-3">
-                    <div class="value-card text-center">
-                        <i class="bi bi-shield-heart fs-1 text-warning"></i>
-                        <h3 class="mt-3">Accessibilité</h3>
-                        <p>Notre plateforme est accessible à tous les talents, où qu'ils soient en Afrique.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="value-card text-center">
-                        <i class="bi bi-people fs-1 text-warning"></i>
-                        <h3 class="mt-3">Communauté</h3>
-                        <p>Nous croyons en la force du collectif et de l'entraide.</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="value-card text-center">
-                        <i class="bi bi-trophy fs-1 text-warning"></i>
-                        <h3 class="mt-3">Excellence</h3>
-                        <p>Nous visons l'excellence dans chaque mission et chaque relation.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Section L'équipe -->
-        <div class="container my-5">
-            <div class="text-center mb-5">
-                <h2 class="display-4 fw-bold">Notre équipe</h2>
-                <p class="fs-5">Des passionnés de la tech africaine</p>
+                <!-- Membre 2 -->
+                <div class="col-md-3 text-center mb-4">
+                    <!-- CORRECTION 3 : Renommer le fichier sans espace -->
+                    <img src="images/Amadou-Sow.avif" alt="Amadou Sow" class="rounded-circle mb-3" width="150">
+                    <h3>Amadou Sow</h3>
+                    <p class="text-muted">Chef de Projet</p>
+                </div>
+
+                <!-- Membre 3 -->
+                <div class="col-md-3 text-center mb-4">
+                    <!-- CORRECTION 4 : Fermeture correcte de la balise img + renommer le fichier -->
+                    <img src="images/Fatou-Ndiaye.webp" alt="Fatou Ndiaye" class="rounded-circle mb-3" width="150">
+                    <h3>Fatou Ndiaye</h3>
+                    <p class="text-muted">Responsable Marketing</p>
+                </div>
+
+                <!-- Membre 4 -->
+                <div class="col-md-3 text-center mb-4">
+                    <!-- CORRECTION 5 : Renommer le fichier sans espace -->
+                    <img src="images/Ibrahima-Kane.avif" alt="Ibrahima Kane" class="rounded-circle mb-3" width="150">
+                    <h3>Ibrahima Kane</h3>
+                    <p class="text-muted">Développeur Senior</p>
+                </div>
+
             </div>
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="team-card text-center">
-                        <img src="images/Mariama Diallo.avif" alt="Mariama Diallo" class="rounded-circle mb-3" width="150">
-                        <h3>Mariama Diallo</h3>
-                        <p class="text-warning">CEO & Co-fondatrice</p>
-                        <div class="social-team">
-                            <a href="#"><i class="bi bi-linkedin"></i></a>
-                            <a href="#"><i class="bi bi-twitter-x"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="team-card text-center">
-                        <img src="images/Amadou Sow.avif" alt="Amadou Sow" class="rounded-circle mb-3" width="150">
-                        <h3>Amadou Sow</h3>
-                        <p class="text-warning">CTO</p>
-                        <div class="social-team">
-                            <a href="#"><i class="bi bi-linkedin"></i></a>
-                            <a href="#"><i class="bi bi-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="team-card text-center">
-                        <img src="images/Fatou Ndiaye.webp" alt="Fatou Ndiaye" class="rounded-circle mb-3" width="150"
-                        <h3>Fatou Ndiaye</h3>
-                        <p class="text-warning">Community Manager</p>
-                        <div class="social-team">
-                            <a href="#"><i class="bi bi-linkedin"></i></a>
-                            <a href="#"><i class="bi bi-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="team-card text-center">
-                        <img src="images/Ibrahima Kane.avif" alt="Ibrahima Kane" class="rounded-circle mb-3" width="150">
-                        <h3>Ibrahima Kane</h3>
-                        <p class="text-warning">Lead Developer</p>
-                        <div class="social-team">
-                            <a href="#"><i class="bi bi-linkedin"></i></a>
-                            <a href="#"><i class="bi bi-github"></i></a>
-                        </div>
-                    </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto text-center">
+                    <h2>Contactez-nous</h2>
+                    <p class="mb-4">N'hésitez pas à nous contacter pour toute question ou collaboration.</p>
+                    <a href="mailto:contact@rachel.com" class="btn btn-primary btn-lg">Envoyer un message</a>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-md-3"><h3><i class="bi bi-stars"></i> AfriTalent</h3><p>La plateforme qui connecte les meilleurs talents tech africains.</p></div>
-                <div class="col-md-3"><h4>Liens utiles</h4><ul class="list-unstyled"><li><a href="index.html" class="text-white">Accueil</a></li><li><a href="freelances.html" class="text-white">Freelances</a></li><li><a href="tarifs.html" class="text-white">Tarifs</a></li></ul></div>
-                <div class="col-md-3"><h4>Ressources</h4><ul class="list-unstyled"><li><a href="#" class="text-white">Blog</a></li><li><a href="#" class="text-white">FAQ</a></li><li><a href="contact.html" class="text-white">Support</a></li></ul></div>
-                <div class="col-md-3"><h4>Contact</h4><p>contact@afritalent.com</p></div>
-            </div>
-            <hr><div class="text-center"><p id="copyright">© AfriTalent</p></div>
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p class="mb-0">&copy; 2026 Rachel. Tous droits réservés.</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
-</body>
-</html>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
