@@ -24,75 +24,67 @@ document.addEventListener('DOMContentLoaded', function() {
 // 2. DARK MODE / LIGHT MODE TOGGLE
 // ============================================
 function initDarkMode() {
-    const toggleBtn = document.getElementById('darkModeToggle');
-    if (!toggleBtn) return;
+  const toggleBtn = document.getElementById('darkModeToggle');
+  if (!toggleBtn) return;
+
+  // Vérifier les préférences
+  const savedTheme = localStorage.getItem('afritalent-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  
+  // Déterminer le thème initial
+  const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+
+  // Appliquer le thème initial et l'icône
+  applyTheme(theme);
+  updateDarkModeIcon(toggleBtn, theme);
+
+  // Écouter le clic
+  toggleBtn.addEventListener('click', function(e) {
+    e.preventDefault();
     
-    // Vérifier si une préférence est sauvegardée dans localStorage
-    const savedTheme = localStorage.getItem('afritalent-theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // CORRECTION : On vérifie la valeur actuelle, si null ou absent, on considère que c'est 'light'
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     
-    // Déterminer le thème initial
-    let theme = savedTheme;
-    if (!theme) {
-        // Si pas de sauvegarde, utiliser la préférence système
-        theme = prefersDark ? 'dark' : 'light';
-    }
-    
-    // Appliquer le thème
-    applyTheme(theme);
-    
-    // Mettre à jour l'icône du bouton
-    updateDarkModeIcon(theme);
-    
-    // Écouter le clic sur le bouton
-    toggleBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
-        applyTheme(newTheme);
-        updateDarkModeIcon(newTheme);
-        
-        // Sauvegarder la préférence
-        localStorage.setItem('afritalent-theme', newTheme);
-        
-        // Animation de transition
-        document.body.style.transition = 'background-color 0.5s ease, color 0.5s ease';
-        setTimeout(() => {
-            document.body.style.transition = '';
-        }, 500);
-    });
+    applyTheme(newTheme);
+    updateDarkModeIcon(toggleBtn, newTheme);
+    localStorage.setItem('afritalent-theme', newTheme);
+
+    // Animation de transition
+    document.body.style.transition = 'background-color 0.5s ease, color 0.5s ease';
+    setTimeout(() => {
+      document.body.style.transition = '';
+    }, 500);
+  });
 }
 
-// Appliquer le thème sur l'élément HTML
+// Appliquer le thème
 function applyTheme(theme) {
-    if (theme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        document.body.style.backgroundColor = '#0F172A';
-        document.body.style.color = '#F1F5F9';
-    } else {
-        document.documentElement.removeAttribute('data-theme');
-        document.body.style.backgroundColor = '';
-        document.body.style.color = '';
-    }
+  if (theme === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.body.style.backgroundColor = '#0F172A';
+    document.body.style.color = '#022b54';
+  } else {
+    // CORRECTION : On force la valeur 'light' au lieu de supprimer l'attribut
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.body.style.backgroundColor = '';
+    document.body.style.color = '';
+  }
 }
 
-// Mettre à jour l'icône du bouton Dark Mode
-function updateDarkModeIcon(theme) {
-    const toggleBtn = document.getElementById('darkModeToggle');
-    if (!toggleBtn) return;
-    
-    if (theme === 'dark') {
-        toggleBtn.innerHTML = '<i class="bi bi-sun-fill"></i>';
-        toggleBtn.classList.remove('btn-outline-secondary');
-        toggleBtn.classList.add('btn-warning');
-        toggleBtn.setAttribute('aria-label', 'Passer en mode clair');
-    } else {
-        toggleBtn.innerHTML = '<i class="bi bi-moon-fill"></i>';
-        toggleBtn.classList.remove('btn-warning');
-        toggleBtn.classList.add('btn-outline-secondary');
-        toggleBtn.setAttribute('aria-label', 'Passer en mode sombre');
-    }
+// Mettre à jour l'icône (Optimisation : toggleBtn passé en paramètre)
+function updateDarkModeIcon(toggleBtn, theme) {
+  if (theme === 'dark') {
+    toggleBtn.innerHTML = '<i class="bi bi-sun-fill"></i>';
+    toggleBtn.classList.remove('btn-outline-secondary');
+    toggleBtn.classList.add('btn-warning');
+    toggleBtn.setAttribute('aria-label', 'Passer en mode clair');
+  } else {
+    toggleBtn.innerHTML = '<i class="bi bi-moon-fill"></i>';
+    toggleBtn.classList.remove('btn-warning');
+    toggleBtn.classList.add('btn-outline-secondary');
+    toggleBtn.setAttribute('aria-label', 'Passer en mode sombre');
+  }
 }
 
 // ============================================
